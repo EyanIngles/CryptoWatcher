@@ -1,6 +1,6 @@
 import React, { useState }from 'react'
 import HTMLReactParser from 'html-react-parser'
-import { useParams, findDOMNode } from'react-router-dom'
+import { useParams } from'react-router-dom'
 import millify from 'millify'
 import { Row, Col, Select, Typography } from 'antd'
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
@@ -14,7 +14,7 @@ const CryptoDetails = () => {
   const { coinId } = useParams();
   const [timePeriod, setTimePeriod] = useState('7d')
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-  const cryptoDetails = data?.data?.coins;
+  const cryptoDetails = data?.data?.coin;
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
   const stats = [
@@ -34,13 +34,7 @@ const CryptoDetails = () => {
   ];
 
   return (
-    <Col className='coin-detail-container'>
-      <Col className='coin-heading-container'>
-      <Title level={2} className='coin-name'>
-        {cryptoDetails.name}({cryptoDetails.slug}) Price
-      </Title>
-      </Col>
-    </Col>
+    <div>CryptoDetails {coinId}</div>
   )
 }
 

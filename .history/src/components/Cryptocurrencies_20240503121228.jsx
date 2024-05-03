@@ -24,8 +24,8 @@ const Cryptocurrencies = ({ simplified }) => {
   return (
     <>
       {!simplified && (
-              <div className='search-crypto' key={''}>
-              <Input key={""} placeholder='Search Cryptos' onChange={(e) => setSearchTerm(e.target.value)}></Input>
+              <div className='search-crypto'>
+              <Input key={"SearchSection"} placeholder='Search Cryptos' onChange={(e) => setSearchTerm(e.target.value)}></Input>
             </div>
       )}
         <Row gutter={[32, 32]} className='crypto-card-container'>

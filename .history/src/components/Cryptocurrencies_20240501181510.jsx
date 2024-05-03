@@ -24,14 +24,14 @@ const Cryptocurrencies = ({ simplified }) => {
   return (
     <>
       {!simplified && (
-              <div className='search-crypto' key={''}>
-              <Input key={""} placeholder='Search Cryptos' onChange={(e) => setSearchTerm(e.target.value)}></Input>
+              <div className='search-crypto'>
+              <Input key={''}placeholder='Search Cryptos' onChange={(e) => setSearchTerm(e.target.value)}></Input>
             </div>
       )}
         <Row gutter={[32, 32]} className='crypto-card-container'>
           {cryptos?.map((currency) => (
             <Col xs={24} sm={12} lg={6} className='crypto-card' key={currency.id}>
-              <Link to={`/crypto/${currency.id}`} key={"cryptocurrenciess2"}>
+              <Link to={`/crypto/${currency.id}`}>
                 <Card title={`${currency.rank}. ${currency.name}`} extra={<img className='crypto-image' src={currency.iconUrl} hoverable="true"/> }>
                   <p>Price: {millify(currency.price)}</p>
                   <p>MarketCap: {millify(currency.marketCap)}</p>

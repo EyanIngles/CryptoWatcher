@@ -23,7 +23,7 @@ const News = (simplified) => {
       {!simplified && (
         <Col span={24}>
           <Select showSearch className='select-news' placeholder='Select a Crypto'
-            optionFilterProp='children' onChange={setNewsCategory()}
+            optionFilterProp='children' onChange={setNewsCategory(value)}
             filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
           </Select>
           <Option value='Cryptocurrency'>Cryptocurrency</Option>

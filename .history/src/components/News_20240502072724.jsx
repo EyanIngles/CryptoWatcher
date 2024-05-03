@@ -3,8 +3,7 @@ import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
 import moment from 'moment';
 
 import { useGetCryptoNewsQuery } from '../services/cryptoNewsapi';
-import { useGetCryptosQuery } from '../services/cryptoApi'
-
+import { useGetCryptoQuery } from '../services/cryptoapi';
 
 const { Text, Title } = Typography;
 const { Option } = Select
@@ -14,7 +13,7 @@ const demoImage = ""
 const News = (simplified) => {
   const [newsCategory, setNewsCategory] = useState('Cryptocurrency')
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory, count: simplified? 6:12 });
-  const { data } = useGetCryptosQuery(100);
+  const { data } = useGetCryptosQuery(count);
   console.log(cryptoNews)
 
   if(!cryptoNews?.value) return 'Loading...';
@@ -23,11 +22,10 @@ const News = (simplified) => {
       {!simplified && (
         <Col span={24}>
           <Select showSearch className='select-news' placeholder='Select a Crypto'
-            optionFilterProp='children' onChange={setNewsCategory()}
+            optionFilterProp='children' onChange={(value) => console.log(value)}
             filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
           </Select>
           <Option value='Cryptocurrency'>Cryptocurrency</Option>
-          {data?.data?.coins.map((coin) => <Option value={coin.name}>{coin.name}</Option>)}
         </Col>
       )}
       {cryptoNews?.value.map((news, i) => (
